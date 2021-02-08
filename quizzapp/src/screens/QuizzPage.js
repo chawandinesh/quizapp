@@ -139,12 +139,12 @@ export default function HomeScreen() {
             borderColor: 'darkred',
             borderWidth: 2,
           }}>
-          <View style={{position: 'absolute', bottom: 0, right: 0}}>
+          <View style={{position: 'absolute', bottom: 3, right: 3}}>
             <View
               style={{
-                height: height * 0.07,
-                width: height * 0.07,
-                backgroundColor: 'darkred',
+                height: height * 0.06,
+                width: height * 0.06,
+                backgroundColor: 'darkgreen',
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: height * 0.2,
