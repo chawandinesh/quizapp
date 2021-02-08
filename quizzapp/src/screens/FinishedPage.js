@@ -14,7 +14,7 @@ import {
 import {Icon} from 'react-native-elements';
 import {Button} from 'react-native-elements';
 const {height, width} = Dimensions.get('window');
-export default function HomeScreen() {
+export default function HomeScreen(props) {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   return (
@@ -51,6 +51,9 @@ export default function HomeScreen() {
             }}>
             Quizz Finished Successfully
           </Text>
+          <View style={{paddingTop: height * 0.1}}>
+              <Icon name="ios-arrow-back-outline" onPress={() => props.navigation.navigate('HomeScreen')} type="ionicon" size={height * 0.08} color="#fff"/>
+          </View>
         </View>
         {/* {ModalPage()} */}
       </ImageBackground>

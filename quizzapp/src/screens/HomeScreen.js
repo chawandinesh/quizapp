@@ -5,6 +5,7 @@ import {
   Dimensions,
   StyleSheet,
   Image,
+  StatusBar,
   ImageBackground,
   TouchableOpacity,
   Pressable,
@@ -44,6 +45,7 @@ export default function HomeScreen(props) {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content"/>
       <ImageBackground
         blurRadius={modalVisible ? 1 : 0}
         source={require('../assets/bg4.jpg')}

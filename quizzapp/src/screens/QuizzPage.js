@@ -9,11 +9,12 @@ import {
   Modal,
   TouchableOpacity,
   Pressable,
+  StatusBar,
 } from 'react-native';
 import {Button, Icon} from 'react-native-elements';
 import FinishedPage from './FinishedPage';
 const {height, width} = Dimensions.get('window');
-export default function HomeScreen() {
+export default function HomeScreen(props) {
   const [optionState, setOptionState] = React.useState(false);
   const [questionCount, setQuestionCount] = React.useState(0);
   const [selectedOption, setSelectedOption] = React.useState('');
@@ -390,11 +391,12 @@ export default function HomeScreen() {
   };
 
   if (questionCount === questions.length) {
-    return <FinishedPage />;
+    return <FinishedPage {...props} />;
   }
   if (questions[questionCount] === undefined) return;
   return (
     <View style={{opacity: blurBackground ? 0.5 : 1, height, width}}>
+        <StatusBar barStyle="light-content"/>
       <ImageBackground
         source={require('../assets/bg4.jpg')}
         style={{
