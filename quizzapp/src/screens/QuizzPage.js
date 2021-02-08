@@ -120,12 +120,12 @@ export default function HomeScreen() {
           justifyContent: 'space-between',
         }}>
         <View style={{alignSelf: 'flex-end', padding: height * 0.03}}>
-          <Icon
+          {/* <Icon
             name="questioncircle"
             type="antdesign"
             color="#fff"
             size={height * 0.04}
-          />
+          /> */}
         </View>
         <View
           style={{
