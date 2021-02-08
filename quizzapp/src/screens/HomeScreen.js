@@ -55,7 +55,7 @@ export default function HomeScreen(props) {
           alignItems: 'center',
         }}>
         <View
-          style={{height: height * 0.2, width: width, alignItems: 'flex-end'}}>
+          style={{height: height * 0.2, width: width, marginTop: height * 0.08, alignItems: 'flex-end'}}>
           <TouchableOpacity
             style={{padding: height * 0.02}}
             onPress={() => setModalVisible(true)}>
