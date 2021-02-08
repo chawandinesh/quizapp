@@ -398,6 +398,7 @@ export default function HomeScreen() {
       <ImageBackground
         source={require('../assets/bg4.jpg')}
         style={{
+          paddingTop: height * 0.1,
           height: height,
           width: width,
         }}>
