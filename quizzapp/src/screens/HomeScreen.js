@@ -279,7 +279,7 @@ export default function HomeScreen(props) {
           />
           <Text
             style={{
-              paddingLeft: width * 0.03,
+              // paddingLeft: width * 0.03,
               fontWeight: 'bold',
               fontSize: height * 0.028,
             }}>
