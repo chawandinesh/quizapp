@@ -156,7 +156,7 @@ export default function HomeScreen(props) {
               textShadowOffset: {width: -3, height: 4},
               textShadowRadius: 10,
             }}>
-            Quizz
+            Quiz
           </Text>
           <Button
             title="Start"

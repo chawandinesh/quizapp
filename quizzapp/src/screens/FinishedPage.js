@@ -54,7 +54,7 @@ export default function FinishedPage(props) {
               textShadowOffset: {width: -1, height: 1},
               textShadowRadius: 10,
             }}>
-            Quizz Finished Successfully
+            Quiz Finished Successfully
           </Text>
           
         </View>
