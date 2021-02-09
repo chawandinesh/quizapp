@@ -91,7 +91,7 @@ export default function HomeScreen(props) {
           </Text>
           <Button
             title="Start"
-            onPress={() => props.navigation.navigate('QuizScreen')}
+            onPress={() => props.navigation.navigate('Sections')}
             raised
             containerStyle={{
               width: width * 0.7,

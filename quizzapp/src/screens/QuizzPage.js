@@ -11,86 +11,46 @@ import {
   Pressable,
   StatusBar,
 } from 'react-native';
+import {useIsFocused} from '@react-navigation/native';
 import {Button, Icon} from 'react-native-elements';
+import Data from './data';
 import FinishedPage from './FinishedPage';
 const {height, width} = Dimensions.get('window');
-export default function HomeScreen(props) {
+export default function QuizzPage(props) {
   const [optionState, setOptionState] = React.useState(false);
   const [questionCount, setQuestionCount] = React.useState(0);
   const [selectedOption, setSelectedOption] = React.useState('');
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalData, setModalData] = React.useState('');
+  const [modalVisibleInfo, setModalVisibleInfo] = React.useState(false);
   const [blurBackground, setBlurBackground] = React.useState(false);
-  const [questions, setQuestions] = React.useState([
-    {
-      name: 'What kind of tax system is found in India?',
-      options: {
-        A: ' Progressive',
-        B: 'Degressive',
-        C: 'Proportional',
-        D: 'None of the following',
-      },
-      correct: 'B',
-    },
-    {
-      name: ' Which of the following is not imposed by the Central Government?',
-      options: {
-        A: 'Agricultural tax',
-        B: 'Corporation tax',
-        C: 'Custom duty',
-        D: 'Sales tax',
-      },
-      correct: 'A',
-    },
-    {
-      name:
-        'Which one of the following States in India has its own Constitution?',
-      options: {
-        A: 'Uttarakhand',
-        B: 'Madhya Pradesh',
-        C: 'J & K',
-        D: 'Nagaland',
-      },
-      correct: 'C',
-    },
-    {
-      name:
-        ' Which of the following countries is an example of “coming together federation”?',
-      options: {A: 'U.S.A', B: 'India', C: 'Spain', D: 'Belgium'},
-      correct: 'A',
-    },
-    {
-      name:
-        'Who among the following is credited for the Corpuscular theory of light?',
-      options: {
-        A: 'Christiaan Hyugens',
-        B: ' Albert Einstein',
-        C: ' James Clerk Maxwell',
-        D: 'Isaac Newton',
-      },
-      correct: 'D',
-    },
-    {
-      name: 'Light year is a unit of which of these following?',
-      options: {A: 'distance', B: 'time', C: 'pressure', D: 'power'},
-      correct: 'A',
-    },
-    {
-      name: 'Which of the following is NOT correct about Vectors addition?',
-      options: {
-        A: 'Vectors addition is associative',
-        B: 'Vectors addition is commutative',
-        C: 'Vectors of different natures can be added',
-        D: 'None of the above',
-      },
-      correct: 'A',
-    },
-  ]);
+
+  const isFocused = useIsFocused();
+  const getInitialData = async () => {
+    setOptionState(false);
+    setQuestionCount(0);
+    setSelectedOption('');
+    setModalData('');
+    setModalVisible(false);
+    setBlurBackground(false);
+  };
+  React.useEffect(() => {
+    getInitialData();
+  }, [props, isFocused]);
+  const {section} = props.route.params;
+  const [questions, setQuestions] = React.useState(Data[section]);
   const handleOption = (option) => {
     setOptionState(true);
     optionState ? null : setSelectedOption(option);
     if (questions.length === questionCount) return;
     if (option === questions[questionCount].correct) {
+      if (questionCount === questions.length - 1) {
+        console.log('rendering');
+        setOptionState(false);
+        setQuestionCount(0);
+        setSelectedOption('');
+        props.navigation.navigate('FinishedScreen');
+      }
       setModalData('Correct');
       setBlurBackground(true);
       setModalVisible(true);
@@ -112,11 +72,12 @@ export default function HomeScreen(props) {
     }
   };
 
+   console.log(`../src/${questions[questionCount].image}.jpeg`)
   const questionBox = () => {
     return (
       <View
         style={{
-          height: height * 0.3,
+          height: height * 0.35,
           alignItems: 'center',
           justifyContent: 'space-between',
         }}>
@@ -130,45 +91,35 @@ export default function HomeScreen(props) {
         </View>
         <View
           style={{
-            backgroundColor: '#fff',
-            height: height * 0.2,
+            height: height * 0.23,
+            width: width * 0.95,
+            backgroundColor: '#1a9aad',
             alignItems: 'center',
             justifyContent: 'center',
-            borderRadius: 10,
-            padding: height * 0.02,
-            width: width * 0.9,
-            borderColor: 'darkred',
-            borderWidth: 2,
+            borderWidth: 1,
           }}>
-          <View style={{position: 'absolute', bottom: 3, right: 3}}>
-            <View
-              style={{
-                height: height * 0.06,
-                width: height * 0.06,
-                backgroundColor: 'darkgreen',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: height * 0.2,
-              }}>
-              <Text
-                style={{
-                  color: '#fff',
-                  fontSize: height * 0.03,
-                  fontWeight: 'bold',
-                }}>
-                {questionCount}
-              </Text>
-            </View>
-          </View>
-
-          <Text
+          <View
             style={{
-              color: '#000',
-              fontSize: height * 0.023,
-              fontWeight: 'bold',
+              backgroundColor: '#fff',
+              height: height * 0.2,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 10,
+              padding: height * 0.02,
+              width: width * 0.9,
+              borderColor: 'darkred',
+              borderWidth: 2,
             }}>
-            {questions[questionCount].name}
-          </Text>
+          { questions[questionCount].image ? <Image source={questions[questionCount].image} style={{height: height * 0.1, width: width * 0.2, margin: height * 0.01}}/> : null }
+            <Text
+              style={{
+                color: '#000',
+                fontSize: height * 0.023,
+                fontWeight: 'bold',
+              }}>
+              {questions[questionCount].name}
+            </Text>
+          </View>
         </View>
       </View>
     );
@@ -390,24 +341,133 @@ export default function HomeScreen(props) {
     );
   };
 
-  if (questionCount === questions.length) {
-    return <FinishedPage {...props} />;
-  }
-  if (questions[questionCount] === undefined) return;
+  const ModalPage = () => {
+    return (
+      <View style={styles.centeredViewInfo}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisibleInfo}
+          onRequestClose={() => {
+            setModalVisibleInfo(!modalVisibleInfo);
+            setBlurBackground(false);
+          }}>
+          <View style={styles.centeredViewInfo}>
+            <View style={styles.modalViewInfo}>
+              <Text
+                style={[
+                  {
+                    ...styles.modalTextInfo,
+                    fontSize: height * 0.03,
+                    fontWeight: 'bold',
+                  },
+                ]}>
+                Information
+              </Text>
+              <Text
+                style={{
+                  fontSize: height * 0.025,
+                  color: 'green',
+                  fontWeight: 'bold',
+                }}>
+                Choose the correct one from the given options to get score
+              </Text>
+              <Pressable
+                style={[styles.buttonInfo, styles.buttonCloseInfo]}
+                onPress={() => {
+                  setModalVisibleInfo(!modalVisibleInfo);
+                  setBlurBackground(false);
+                }}>
+                <Text style={styles.textStyleInfo}>Close</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+      </View>
+    );
+  };
+
+  // if (questionCount === questions.length) {
+  //   return <FinishedPage {...props} />;
+  // }
+  if (questions[questionCount] === undefined) return null;
   return (
     <View style={{opacity: blurBackground ? 0.5 : 1, height, width}}>
-        <StatusBar barStyle="light-content"/>
-      <ImageBackground
-        source={require('../assets/bg4.jpg')}
+      <StatusBar barStyle="light-content" />
+      <View
         style={{
-          paddingTop: height * 0.1,
+          height: height * 0.07,
+          alignItems: 'center',
+          width: width,
+          flexDirection: 'row',
+          backgroundColor: '#1a9aad',
+          justifyContent: 'space-between',
+        }}>
+        <TouchableOpacity
+          style={{paddingLeft: width * 0.02}}
+          onPress={() => props.navigation.goBack()}>
+          <Icon
+            name="ios-arrow-back-circle"
+            type="ionicon"
+            size={height * 0.04}
+            color="#fff"
+          />
+        </TouchableOpacity>
+        <View>
+          <Text
+            style={{
+              color: '#fff',
+              fontWeight: 'bold',
+              fontSize: height * 0.04,
+            }}>
+            {section}
+          </Text>
+        </View>
+        <View style={{paddingRight: width * 0.02}}>
+          <Icon
+            onPress={() => {
+              setModalVisibleInfo(true);
+              setBlurBackground(true);
+            }}
+            name="info-with-circle"
+            type="entypo"
+            size={height * 0.04}
+            color="#fff"
+          />
+        </View>
+      </View>
+      <ImageBackground
+        blurRadius={0.4}
+        source={require('../assets/bg11.jpg')}
+        style={{
           height: height,
           width: width,
         }}>
+        <View style={{position: 'absolute', top: 15, zIndex: 2, left: 3}}>
+          <View
+            style={{
+              height: height * 0.1,
+              width: height * 0.1,
+              backgroundColor: '#fff',
+              borderWidth: 2,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: height * 0.2,
+            }}>
+            <Text
+              style={{
+                color: '#1a9aad',
+                fontSize: height * 0.03,
+                fontWeight: 'bold',
+              }}>
+              {questionCount}/{questions.length}
+            </Text>
+          </View>
+        </View>
         {questionBox()}
         {optionsBox()}
-
         {modalBox()}
+        {ModalPage()}
       </ImageBackground>
     </View>
   );
@@ -452,6 +512,61 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+
+  overlayInfo: {
+    flex: 1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    // opacity: 0.5,
+    backgroundColor: 'black',
+    width: width * 0.4,
+  },
+  modalViewInfo: {
+    margin: 20,
+    backgroundColor: 'white',
+    justifyContent: 'space-between',
+    borderRadius: 20,
+    padding: 35,
+    width: width * 0.9,
+    height: height * 0.8,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  centeredViewInfo: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  buttonInfo: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpenInfo: {
+    backgroundColor: '#F194FF',
+  },
+  buttonCloseInfo: {
+    backgroundColor: '#2196F3',
+    width: width * 0.4,
+  },
+  textStyleInfo: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalTextInfo: {
     marginBottom: 15,
     textAlign: 'center',
   },

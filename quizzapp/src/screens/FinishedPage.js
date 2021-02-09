@@ -14,7 +14,7 @@ import {
 import {Icon} from 'react-native-elements';
 import {Button} from 'react-native-elements';
 const {height, width} = Dimensions.get('window');
-export default function HomeScreen(props) {
+export default function FinishedPage(props) {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   return (
@@ -30,7 +30,7 @@ export default function HomeScreen(props) {
           alignItems: 'center',
         }}>
      
-        <View style={{height: height, justifyContent:'center'}}>
+        <View style={{height: height * 0.6, justifyContent:'center'}}>
           <Image
             source={require('../assets/quizz3.png')}
             style={{
@@ -51,9 +51,18 @@ export default function HomeScreen(props) {
             }}>
             Quizz Finished Successfully
           </Text>
-          <View style={{paddingTop: height * 0.1}}>
-              <Icon name="ios-arrow-back-outline" onPress={() => props.navigation.navigate('HomeScreen')} type="ionicon" size={height * 0.08} color="#fff"/>
+          
+        </View>
+        <View style={{justifyContent:'space-between',height: height * 0.4,justifyContent:'space-around',width: width, flexDirection:'row'}}>
+        <View style={{paddingTop: height * 0.1}}>
+              <Icon name="restart" onPress={() => props.navigation.navigate('QuizScreen')} type="material-community" size={height * 0.08} color="#fff"/>
+              <Text style={{fontSize: height * 0.03, fontWeight:'bold', color:'#ffd'}}>Restart</Text>
           </View>
+          <View style={{paddingTop: height * 0.1}}>
+              <Icon name="ios-home" onPress={() => props.navigation.navigate('HomeScreen')} type="ionicon" size={height * 0.07} color="#fff"/>
+              <Text style={{fontSize: height * 0.03, fontWeight:'bold', color:'#ffd'}}>Go Home</Text>
+          </View>
+
         </View>
         {/* {ModalPage()} */}
       </ImageBackground>
