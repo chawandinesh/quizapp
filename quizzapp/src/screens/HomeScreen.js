@@ -168,7 +168,7 @@ export default function HomeScreen(props) {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <View
+        {/* <View
           style={{
             height: height * 0.2,
             width: width,
@@ -185,8 +185,8 @@ export default function HomeScreen(props) {
               size={height * 0.05}
             />
           </TouchableOpacity>
-        </View>
-        <View style={{height: height * 0.8}}>
+        </View> */}
+        <View style={{height: height * 0.8, justifyContent: 'center'}}>
           <Image
             source={require('../assets/quizz3.png')}
             style={{
@@ -249,12 +249,7 @@ export default function HomeScreen(props) {
         style={{
           position: 'absolute',
           bottom: height * 0.04,
-          // right: 0,
           left: width * 0.1,
-          // height: height * 0.2,
-          // width: width,
-          // marginTop: height * 0.08,
-          // alignItems: 'flex-end',
         }}>
         <TouchableOpacity
           style={{
@@ -284,6 +279,45 @@ export default function HomeScreen(props) {
               fontSize: height * 0.028,
             }}>
             Rate app
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <View
+        style={{
+          position: 'absolute',
+          bottom: height * 0.04,
+          right: width * 0.1,
+        }}>
+        <TouchableOpacity
+          style={{
+            padding: height * 0.01,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#ffd',
+            borderRadius: height * 0.01,
+            borderWidth: 1,
+            width: width * 0.3,
+            height: height * 0.08,
+            // flexDirection: 'row',
+          }}
+          onPress={() => {
+            setModalVisible(true);
+          }}>
+          <Icon
+            name="info-with-circle"
+            type="entypo"
+            color="purple"
+            size={height * 0.04}
+          />
+
+          <Text
+            style={{
+              // paddingLeft: width * 0.03,
+              fontWeight: 'bold',
+              fontSize: height * 0.028,
+            }}>
+            About Us
           </Text>
         </TouchableOpacity>
       </View>
