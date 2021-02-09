@@ -6,7 +6,8 @@ import {
   ImageBackground,
   TouchableOpacity,
   FlatList,
-  NativeModules
+  NativeModules,
+  Image,
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 const {height, width} = Dimensions.get('window');
@@ -60,10 +61,11 @@ export default function Levels(props) {
         <View
           style={{
             width: width,
-            height: height * 0.9,
+            height: height* 0.8,
             justifyContent: 'center',
             alignItems: 'center',
           }}>
+             <Image source={require('../assets/img.png')} style={{height: height * 0.25, width: width * 0.4}} />
               <Text style={{fontSize: height * 0.035 , fontWeight:'bold'}}>
                   You have selected <Text style={{color:'#f58', fontSize: height * 0.04}}>{section}</Text>
               </Text>
