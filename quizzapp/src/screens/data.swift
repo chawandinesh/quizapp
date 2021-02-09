@@ -1,43 +1,51 @@
 import Foundation
-class ImageData1{
+class ImageData2{
     var list = [Question]()
     init() {
+      list.append(Question(image:"31.jpg", questionText:"Which geometric shape is depicted here ?", choiceA:"Heptagon", choiceB: "Hexagon", choiceC:"Pentagon", choiceD:"Octagon", answer: 1))
+      
+      list.append(Question(image:"32.jpg", questionText:"Which geometric shape is depicted here ?", choiceA:"Hexagonal prism", choiceB: "Rectangular parallelepiped", choiceC:"Pyramid", choiceD:"Tetrahedron", answer: 3))
         
-        list.append(Question(image:"1",questionText:"What does BFF stand for?",choiceA:"Best Friends Forever",choiceB:"Bosom Friends Forever",choiceC:"Be Friends Forever",choiceD:"None of the above",answer:1))
+        list.append(Question(image:"Anne Frank.jpg", questionText:"Author of The Diary of a young girl is", choiceA:"Anne Frank", choiceB: "Rachel Carson", choiceC:"Roland Barthes", choiceD:" Ibn battuta", answer: 1))
         
-        list.append(Question(image:"2",questionText:"What does OMG mean?",choiceA:"Over My Garden",choiceB:"Oh My God",choiceC:"Oh My Gracious",choiceD:"None of the above",answer:2))
+        list.append(Question(image:"Ram Mohan Roy.jpg", questionText:"A Gift of Monotheists", choiceA:"Ashapurna Devi", choiceB: "Ram Mohan Roy", choiceC:"Boris Pasternak", choiceD:"David Foster Wallace", answer: 2))
         
-        list.append(Question(image:"3",questionText:"DVD stands for...",choiceA:"Digital Versatile Disc",choiceB:"Digital Version Data",choiceC:"None of the above",choiceD:"Digital Vinyl Disc",answer:1))
-        
-        list.append(Question(image:"4",questionText:"What does SWAT mean in law enforcement?",choiceA:"Secure Weapons Against Terror",choiceB:"Special Watch Advance Team",choiceC:"Special Weapons And Tactics",choiceD:"None of the above",answer:3))
-        
-        list.append(Question(image:"5",questionText:"ROFL is…?",choiceA:"Reaching Out For Love",choiceB:"Rolling On the Floor Laughing",choiceC:"Reading Over Fluorescent Light",choiceD:"None of the above",answer:2))
-        
-        list.append(Question(image:"6",questionText:"What's the full form of SUV?",choiceA:"Special Underwater Vehicle",choiceB:"Sports Universal Van",choiceC:"Sport Utility Vehicle",choiceD:"None of the above",answer:3))
-        
-        list.append(Question(image:"7",questionText:"PGA is the acronym for...?",choiceA:"Professional Golfers' Association",choiceB:"Professional Golfers' Assembly",choiceC:"None of the above",choiceD:"Pirate Golf Awayday",answer:1))
-        
-        list.append(Question(image:"8",questionText:"What's BYO?",choiceA:"Brew Your Own",choiceB:"Bring out Your Opinion",choiceC:"Bring Your Own",choiceD:"None of the above",answer:3))
-        
-        list.append(Question(image:"9",questionText:"FYEO is expanded as...?",choiceA:"For Your Eyes Only",choiceB:"For Your Ears Only",choiceC:"For Your Experience Only",choiceD:"None of the above",answer:1))
-        
-        
-        list.append(Question(image:"10",questionText:"FWIW means…",choiceA:"Felled Wood Is Weird",choiceB:"For What It's Worth",choiceC:"Flowers Wilt In the Wind",choiceD:"Tragedies",answer:2 ))
-        
-        list.append(Question(image:"11",questionText:"What does IMHO mean?",choiceA:"In My Humble Opinion",choiceB:"In My Hand Over",choiceC:"It's My Honest Offer",choiceD:"None of the above",answer:1))
-        
-        list.append(Question(image:"12",questionText:"LOL means...",choiceA:"Laugh Out Loud",choiceB:"Lots of Love",choiceC:"Love Of Life",choiceD:"None of the above",answer:1))
-        
+       list.append(Question(image:"16.jpg", questionText:"Indentify which color is showing in picture :", choiceA:"Yellow", choiceB: "Orange", choiceC:"Green", choiceD:"Blue", answer: 1))
+              
+              list.append(Question(image:"17.jpg", questionText:"Which color is showing in picture ?", choiceA:"Blue", choiceB: "Brown", choiceC:"Dark Green", choiceD:"Black", answer: 4))
+              
+              list.append(Question(image:"18.jpg", questionText:"Identify the color is given below :", choiceA:"Gray", choiceB: "White", choiceC:"Pink", choiceD:"Green", answer: 2))
+              
+              list.append(Question(image:"19.jpg", questionText:"Can you identify this color ?", choiceA:"Blue", choiceB: "Red", choiceC:"Green", choiceD:"White", answer: 1))
+              
+              list.append(Question(image:"20.jpg", questionText:"Whats is the color  of wood ?", choiceA:"Brown", choiceB: "Green", choiceC:"Red", choiceD:"None", answer: 1))
 
+        list.append(Question(image:"33.jpg", questionText:"Which geometric shape is depicted here ?", choiceA:"Annulus", choiceB: "Oval",choiceC:"Kite",choiceD:"Crescent", answer: 4))
         
-        list.append(Question(image:"13", questionText:"What's the full form of BTW?", choiceA:"Be That Way", choiceB: "By The Way", choiceC:"By The Water", choiceD:"None of the above", answer: 2))
+        list.append(Question(image:"34.png", questionText:"Which geometric shape is depicted here ?",choiceA:"Tetradecagon", choiceB: "Nonagon", choiceC:"Pentadecagon", choiceD:"Hendecagon", answer: 3))
         
-        list.append(Question(image:"14", questionText: "cator beacons Muller's best path to becoming PM When you write BRB, what does it mean?", choiceA:"Be Reporting Back", choiceB: "Ram Mohan Roy", choiceC:"Be Running Back", choiceD:"Be Right Back", answer: 4))
+        list.append(Question(image:"35.png", questionText:"Which geometric shape is depicted here ?",choiceA:"Pentoid", choiceB: "Pentagon", choiceC:"Pentagram", choiceD:"Pentabola", answer: 3))
         
-        list.append(Question(image:"15", questionText:"What is the full form of FYI?", choiceA:"For Your Interest", choiceB: "For Your Information", choiceC:"Find Your Interest", choiceD:"None of the above", answer: 2))
+        list.append(Question(image:"36.jpg", questionText:"Which geometric shape is depicted here ?",choiceA:"Astroid", choiceB: "Ellipse", choiceC:"Cone", choiceD:"Lens", answer: 2))
+        
+        list.append(Question(image:"37.jpg", questionText:"Which geometric shape is depicted here ?",choiceA:"Heptagram", choiceB: "Pentagram", choiceC:"Nonagram", choiceD:"Hexagram", answer: 4))
+        
+        list.append(Question(image:"38.png", questionText:"Which geometric shape is depicted here ?", choiceA:"Octagon", choiceB: "Nonagon", choiceC:"Decagon", choiceD:"Dodecagon", answer: 1))
+        
+        list.append(Question(image:"39.png", questionText:"Which geometric shape is depicted here ?", choiceA:"Decagram", choiceB: "Heptagram", choiceC:"Octagram", choiceD:"Pentagram", answer: 3))
+        
+        list.append(Question(image:"40.png", questionText:"Which geometric shape is depicted here ?", choiceA:"Arbelos", choiceB: "Parallelogram", choiceC:"Pentagon", choiceD:"Tetrahedron", answer: 2))
+        
+        list.append(Question(image:"41.png", questionText:"Which geometric shape is depicted here ?", choiceA:"Quatrefoil", choiceB: "Astroid", choiceC:"Deltoid", choiceD:"Ovoid", answer: 2))
+        
+        list.append(Question(image:"42.png", questionText:"Which geometric shape is depicted here ?", choiceA:"Hendecagon", choiceB: "Nonagon", choiceC:"Tetradecagon", choiceD:"Pentadecagon", answer: 4))
+        
+        list.append(Question(image:"43.png", questionText:"Which geometric shape is depicted here ?", choiceA:"Square", choiceB: "Heart", choiceC:"Plus", choiceD:"Circle", answer: 2))
+        
+        list.append(Question(image:"44.png", questionText:"Which geometric shape is depicted here ?", choiceA:"Pentagon", choiceB: "Tetragram", choiceC:"Rectangular", choiceD:"Plus", answer: 4))
+        
+        list.append(Question(image:"45.jpg", questionText:"Which geometric shape is depicted here ?", choiceA:"Square", choiceB: "Circle", choiceC:"Pyramid", choiceD:"Diamond", answer: 4))
 
-   }
 }
 
-
-
+}

@@ -11,11 +11,14 @@ import {
   Pressable,
   Alert,
   Modal,
+  NativeModules,
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 import {Button} from 'react-native-elements';
 const {height, width} = Dimensions.get('window');
 export default function HomeScreen(props) {
+  const {StatusBarManager} = NativeModules;
+  const {HEIGHT} = StatusBarManager;
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const ModalPage = () => {
@@ -30,7 +33,65 @@ export default function HomeScreen(props) {
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>About Page</Text>
+              <Text
+                style={[
+                  {
+                    ...styles.modalText,
+                    color: 'darkred',
+                    fontSize: height * 0.03,
+                    fontWeight: 'bold',
+                    textDecorationStyle: 'solid',
+                    textDecorationLine: 'underline',
+                  },
+                ]}>
+                About Us
+              </Text>
+
+              {/* <View> */}
+              <Text
+                style={[
+                  {
+                    ...styles.modalText,
+                    color: '#08f',
+                    fontSize: height * 0.026,
+                    fontWeight: 'bold',
+                  },
+                ]}>
+                There are four levels of quiz in this app.
+              </Text>
+              <Text
+                style={[
+                  {
+                    ...styles.modalText,
+                    color: '#000',
+                    fontSize: height * 0.026,
+                    fontWeight: 'bold',
+                  },
+                ]}>
+                Out of four options, user will have to select the correct
+                answer. {'\n'}
+                {'\b'}
+                If the answer selected by the user will be correct ,the answer
+                will be marked as correct and user will rewarded{' '}
+                <Text style={{color: 'green'}}>+1 mark</Text>. {'\n'}
+                {'\b'}
+                If the answer selected by the user will be incorrect ,the answer
+                will be marked as incorrect and user will rewarded{' '}
+                <Text style={{color: 'red'}}>0 mark</Text>.
+              </Text>
+              {/* <Text>
+                    {' '}
+                    If the answer selected by the user will be correct ,the
+                    answer will be marked as correct and user will rewarded +1
+                    mark.
+                  </Text> */}
+              {/* <Text>
+                    {' '}
+                    If the answer selected by the user will be incorrect ,the
+                    answer will be marked as incorrect and user will rewarded 0
+                    mark.
+                  </Text> */}
+              {/* </View> */}
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}>
@@ -45,19 +106,25 @@ export default function HomeScreen(props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content"/>
+      <StatusBar barStyle="light-content" />
       <ImageBackground
-        blurRadius={modalVisible ? 1 : 0}
-        source={require('../assets/bg4.jpg')}
+        // blurRadius={modalVisible ? 1 : 0}
+        source={require('../assets/quiz3.png')}
         style={{
           height: height,
+          paddingTop: HEIGHT,
           width: width,
           // backgroundColor: '#56189e',
           justifyContent: 'center',
           alignItems: 'center',
         }}>
         <View
-          style={{height: height * 0.2, width: width, marginTop: height * 0.08, alignItems: 'flex-end'}}>
+          style={{
+            height: height * 0.2,
+            width: width,
+            marginTop: height * 0.08,
+            alignItems: 'flex-end',
+          }}>
           <TouchableOpacity
             style={{padding: height * 0.02}}
             onPress={() => setModalVisible(true)}>
@@ -82,9 +149,11 @@ export default function HomeScreen(props) {
             style={{
               fontSize: width * 0.3,
               fontWeight: 'bold',
-              color: '#fff',
-              textShadowColor: 'rgba(0, 0, 0, 0.75)',
-              textShadowOffset: {width: -1, height: 1},
+              backgroundColor: '#fff',
+              borderRadius: height * 0.03,
+              color: '#05f',
+              textShadowColor: 'rgba(255,255, 255, 1)',
+              textShadowOffset: {width: -3, height: 4},
               textShadowRadius: 10,
             }}>
             Quizz
@@ -95,18 +164,19 @@ export default function HomeScreen(props) {
             raised
             containerStyle={{
               width: width * 0.7,
+              marginTop: height * 0.03,
               height: height * 0.07,
               alignSelf: 'center',
             }}
             titleStyle={{
               fontSize: height * 0.03,
               fontWeight: 'bold',
-              color: '#000',
+              color: '#fff',
             }}
             buttonStyle={{
               height: height * 0.07,
               borderRadius: height * 0.1,
-              backgroundColor: '#dff',
+              backgroundColor: '#56189e',
             }}
           />
         </View>

@@ -269,7 +269,7 @@ export default {
       correct: 'C',
     },
     {
-      image:require('../assets/5.jpeg'),
+      image: require('../assets/5.jpeg'),
       name: 'ROFL is…?',
       options: {
         A: 'Reaching Out For Love',
@@ -291,7 +291,7 @@ export default {
       correct: 'C',
     },
     {
-      image:require('../assets/7.jpeg'),
+      image: require('../assets/7.jpeg'),
       name: 'PGA is the acronym for...?',
       options: {
         A: "Professional Golfers' Association",
@@ -302,7 +302,7 @@ export default {
       correct: 'A',
     },
     {
-      image: '8',
+      image: require('../assets/8.jpeg'),
       name: "What's BYO?",
       options: {
         A: 'Brew Your Own',
@@ -313,7 +313,7 @@ export default {
       correct: 'C',
     },
     {
-      image: '9',
+      image: require('../assets/9.jpeg'),
       name: 'FYEO is expanded as...?',
       options: {
         A: 'For Your Eyes Only',
@@ -325,7 +325,7 @@ export default {
     },
 
     {
-      image: '10',
+      image: require('../assets/10.jpeg'),
       name: 'FWIW means…',
       options: {
         A: 'Felled Wood Is Weird',
@@ -337,7 +337,7 @@ export default {
     },
 
     {
-      image: '11',
+      image: require('../assets/11.jpeg'),
       name: 'What does IMHO mean?',
       options: {
         A: 'In My Humble Opinion',
@@ -349,7 +349,7 @@ export default {
     },
 
     {
-      image: '12',
+      image: require('../assets/12.jpeg'),
       name: 'LOL means...',
       options: {
         A: 'Laugh Out Loud',
@@ -359,9 +359,8 @@ export default {
       },
       correct: 'A',
     },
-
     {
-      image: '13',
+      image: require('../assets/13.jpeg'),
       name: "What's the full form of BTW?",
       options: {
         A: 'Be That Way',
@@ -373,7 +372,7 @@ export default {
     },
 
     {
-      image: '14',
+      image: require('../assets/14.jpeg'),
       name:
         "cator beacons Muller's best path to becoming PM When you write BRB, what does it mean?",
       options: {
@@ -386,7 +385,7 @@ export default {
     },
 
     {
-      image: '15',
+      image: require('../assets/15.jpeg'),
       name: 'What is the full form of FYI?',
       options: {
         A: 'For Your Interest',
@@ -399,14 +398,162 @@ export default {
   ],
   'Level 4': [
     {
-      name: 'In dictionary, which word comes fourth in arrangement?',
+      image: require('../assets/31.jpg'),
+      name: 'Which geometric shape is depicted here ?',
       options: {
-        A: 'Propense',
-        B: 'Prophet',
-        C: 'Prong',
-        D: 'Propine',
+        A: 'Heptagon',
+        B: 'Hexagon',
+        C: 'Pentagon',
+        D: 'Octagon',
+      },
+      correct: 'A',
+    },
+    {
+      image: require('../assets/32.jpg'),
+      name: 'Which geometric shape is depicted here ?',
+      options: {
+        A: 'Hexagonal prism',
+        B: 'Rectangular parallelepiped',
+        C: 'Pyramid',
+        D: 'Tetrahedron',
+      },
+      correct: 'C',
+    },
+    {
+      image: require('../assets/16.jpg'),
+      name: 'Indentify which color is showing in picture :',
+      options: {
+        A: 'Yellow',
+        B: 'Orange',
+        C: 'Green',
+        D: 'Blue',
+      },
+      correct: 'A',
+    },
+    {
+      image: require('../assets/17.jpg'),
+      name: 'Which color is showing in picture ?',
+      options: {
+        A: 'Blue',
+        B: 'Brown',
+        C: 'Dark Green',
+        D: 'Black',
       },
       correct: 'D',
+    },
+    {
+      image: require('../assets/18.jpg'),
+      name: 'Identify the color is given below :',
+      options: {
+        A: 'Gray',
+        B: 'White',
+        C: 'Pink',
+        D: 'Green',
+      },
+      correct: 'B',
+    },
+    {
+      image: require('../assets/19.jpg'),
+      name: 'Can you identify this color ?',
+      options: {
+        A: 'Blue',
+        B: 'Red',
+        C: 'Green',
+        D: 'White',
+      },
+      correct: 'A',
+    },
+    {
+      image: require('../assets/21.jpg'),
+      name: 'Whats is the color  of wood ?',
+      options: {
+        A: 'Brown',
+        B: 'Green',
+        C: 'Red',
+        D: 'None',
+      },
+      correct: 'A',
+    },
+    {
+      image: require('../assets/33.jpg'),
+      name: 'Which geometric shape is depicted here ?',
+      options: {
+        A: 'Annulus',
+        B: 'Oval',
+        C: 'Kite',
+        D: 'Crescent',
+      },
+      correct: 'D',
+    },
+    {
+      image: require('../assets/34.png'),
+      name: 'Which geometric shape is depicted here ?',
+      options: {
+        A: 'Tetradecagon',
+        B: 'Nonagon',
+        C: 'Pentadecagon',
+        D: 'Hendecagon',
+      },
+      correct: 'C',
+    },
+    {
+      image: require('../assets/35.png'),
+      name: 'Which geometric shape is depicted here ?',
+      options: {
+        A: 'Pentoid',
+        B: 'Pentagon',
+        C: 'Pentagram',
+        D: 'Pentabola',
+      },
+      correct: 'C',
+    },
+
+    {
+      image: require('../assets/36.jpg'),
+      name: 'Which geometric shape is depicted here ?',
+      options: {
+        A: 'Astroid',
+        B: 'Ellipse',
+        C: 'Cone',
+        D: 'Lens',
+      },
+      correct: 'B',
+    },
+
+    {
+      image: require('../assets/37.jpg'),
+      name: 'Which geometric shape is depicted here ?',
+      options: {
+        A: 'Heptagram',
+        B: 'Pentagram',
+        C: 'Nonagram',
+        D: 'Hexagram',
+      },
+      correct: 'D',
+    },
+
+    {
+      image: require('../assets/38.png'),
+      name: 'Which geometric shape is depicted here ?',
+      options: {
+        A: 'Octagon',
+        B: 'Nonagon',
+        C: 'Decagon',
+        D: 'Dodecagon',
+      },
+      correct: 'A',
+    },
+
+    {
+      image: require('../assets/39.png'),
+      name: 'Which geometric shape is depicted here ?',
+      options: {
+        A: 'Decagram',
+        B: 'Heptagram',
+        C: 'Octagram',
+        D: 'Pentagram',
+      },
+      correct: 'C',
     },
   ],
 };

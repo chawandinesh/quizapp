@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Pressable,
   StatusBar,
+  NativeModules,
 } from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
 import {Button, Icon} from 'react-native-elements';
@@ -17,6 +18,8 @@ import Data from './data';
 import FinishedPage from './FinishedPage';
 const {height, width} = Dimensions.get('window');
 export default function QuizzPage(props) {
+  const {StatusBarManager} = NativeModules;
+  const {HEIGHT} = StatusBarManager;
   const [optionState, setOptionState] = React.useState(false);
   const [questionCount, setQuestionCount] = React.useState(0);
   const [selectedOption, setSelectedOption] = React.useState('');
@@ -72,7 +75,6 @@ export default function QuizzPage(props) {
     }
   };
 
-   console.log(`../src/${questions[questionCount].image}.jpeg`)
   const questionBox = () => {
     return (
       <View
@@ -110,7 +112,16 @@ export default function QuizzPage(props) {
               borderColor: 'darkred',
               borderWidth: 2,
             }}>
-          { questions[questionCount].image ? <Image source={questions[questionCount].image} style={{height: height * 0.1, width: width * 0.2, margin: height * 0.01}}/> : null }
+            {questions[questionCount].image ? (
+              <Image
+                source={questions[questionCount].image}
+                style={{
+                  height: height * 0.1,
+                  width: width * 0.2,
+                  margin: height * 0.01,
+                }}
+              />
+            ) : null}
             <Text
               style={{
                 color: '#000',
@@ -144,7 +155,7 @@ export default function QuizzPage(props) {
             borderRightWidth: 3,
             borderRightColor: 'gray',
             height: 'auto',
-            backgroundColor: '#f6f2fa',
+            backgroundColor: '#defff6',
             //   marginBottom: height * 0.01,
             borderRadius: height * 0.01,
             flexDirection: 'row',
@@ -153,14 +164,14 @@ export default function QuizzPage(props) {
           <View
             style={{
               backgroundColor: '#000',
-              width: width * 0.08,
-              height: width * 0.08,
+              width: width * 0.1,
+              height: width * 0.1,
               borderRadius: height * 0.1,
               alignItems: 'center',
               justifyContent: 'center',
               marginLeft: 2,
             }}>
-            <Text style={{color: '#fff', fontWeight: 'bold'}}>A</Text>
+            <Text style={{color: '#fff', fontWeight: 'bold', fontSize: height * 0.03}}>A</Text>
           </View>
           <View
             style={{
@@ -169,7 +180,9 @@ export default function QuizzPage(props) {
               padding: height * 0.01,
               paddingRight: height * 0.02,
             }}>
-            <Text>{questions[questionCount].options.A}</Text>
+            <Text style={{fontSize: height * 0.025, fontWeight: 'bold'}}>
+              {questions[questionCount].options.A}
+            </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -183,7 +196,7 @@ export default function QuizzPage(props) {
             borderBottomColor: 'gray',
             borderRightWidth: 3,
             borderRightColor: 'gray',
-            backgroundColor: '#f6f2fa',
+            backgroundColor: '#defff6',
             //   marginBottom: height * 0.01,
             borderRadius: height * 0.01,
             flexDirection: 'row',
@@ -192,14 +205,14 @@ export default function QuizzPage(props) {
           <View
             style={{
               backgroundColor: '#000',
-              width: width * 0.08,
-              height: width * 0.08,
+              width: width * 0.1,
+              height: width * 0.1,
               borderRadius: height * 0.1,
               alignItems: 'center',
               justifyContent: 'center',
               marginLeft: 2,
             }}>
-            <Text style={{color: '#fff', fontWeight: 'bold'}}>B</Text>
+            <Text style={{color: '#fff', fontWeight: 'bold', fontSize: height * 0.03}}>B</Text>
           </View>
           <View
             style={{
@@ -208,7 +221,9 @@ export default function QuizzPage(props) {
               padding: height * 0.01,
               paddingRight: height * 0.02,
             }}>
-            <Text>{questions[questionCount].options.B}</Text>
+            <Text style={{fontSize: height * 0.025, fontWeight: 'bold'}}>
+              {questions[questionCount].options.B}
+            </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -222,7 +237,7 @@ export default function QuizzPage(props) {
             borderBottomColor: 'gray',
             borderRightWidth: 3,
             borderRightColor: 'gray',
-            backgroundColor: '#f6f2fa',
+            backgroundColor: '#defff6',
             //   marginBottom: height * 0.01,
             borderRadius: height * 0.01,
             flexDirection: 'row',
@@ -231,14 +246,14 @@ export default function QuizzPage(props) {
           <View
             style={{
               backgroundColor: '#000',
-              width: width * 0.08,
-              height: width * 0.08,
+              width: width * 0.1,
+              height: width * 0.1,
               borderRadius: height * 0.1,
               alignItems: 'center',
               justifyContent: 'center',
               marginLeft: 2,
             }}>
-            <Text style={{color: '#fff', fontWeight: 'bold'}}>C</Text>
+            <Text style={{color: '#fff', fontWeight: 'bold', fontSize: height * 0.03}}>C</Text>
           </View>
           <View
             style={{
@@ -247,7 +262,9 @@ export default function QuizzPage(props) {
               padding: height * 0.01,
               paddingRight: height * 0.02,
             }}>
-            <Text>{questions[questionCount].options.C}</Text>
+            <Text style={{fontSize: height * 0.025, fontWeight: 'bold'}}>
+              {questions[questionCount].options.C}
+            </Text>
           </View>
         </TouchableOpacity>
 
@@ -262,7 +279,7 @@ export default function QuizzPage(props) {
             borderBottomColor: 'gray',
             borderRightWidth: 3,
             borderRightColor: 'gray',
-            backgroundColor: '#f6f2fa',
+            backgroundColor: '#defff6',
             //   marginBottom: height * 0.01,
             borderRadius: height * 0.01,
             flexDirection: 'row',
@@ -271,14 +288,14 @@ export default function QuizzPage(props) {
           <View
             style={{
               backgroundColor: '#000',
-              width: width * 0.08,
-              height: width * 0.08,
+              width: width * 0.1,
+              height: width * 0.1,
               borderRadius: height * 0.1,
               alignItems: 'center',
               justifyContent: 'center',
               marginLeft: 2,
             }}>
-            <Text style={{color: '#fff', fontWeight: 'bold'}}>D</Text>
+            <Text style={{color: '#fff', fontWeight: 'bold', fontSize: height * 0.03}}>D</Text>
           </View>
           <View
             style={{
@@ -287,7 +304,9 @@ export default function QuizzPage(props) {
               padding: height * 0.01,
               paddingRight: height * 0.02,
             }}>
-            <Text>{questions[questionCount].options.D}</Text>
+            <Text style={{fontSize: height * 0.025, fontWeight: 'bold'}}>
+              {questions[questionCount].options.D}
+            </Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -396,7 +415,8 @@ export default function QuizzPage(props) {
       <StatusBar barStyle="light-content" />
       <View
         style={{
-          height: height * 0.07,
+          paddingTop: HEIGHT,
+          height: height * 0.15,
           alignItems: 'center',
           width: width,
           flexDirection: 'row',
@@ -461,6 +481,29 @@ export default function QuizzPage(props) {
                 fontWeight: 'bold',
               }}>
               {questionCount}/{questions.length}
+            </Text>
+          </View>
+        </View>
+
+
+        <View style={{position: 'absolute', top: 25, zIndex: 2, right: 3}}>
+          <View
+            style={{
+              height: height * 0.07,
+              width: width * 0.4,
+              backgroundColor: '#fff',
+              borderWidth: 2,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: height * 0.2,
+            }}>
+            <Text
+              style={{
+                color: '#169423',
+                fontSize: height * 0.03,
+                fontWeight: 'bold',
+              }}>
+             <Text style={{color:'#000'}}> Score: </Text>{questionCount}
             </Text>
           </View>
         </View>
@@ -532,7 +575,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 35,
     width: width * 0.9,
-    height: height * 0.8,
+    height: height * 0.4,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -558,7 +601,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F194FF',
   },
   buttonCloseInfo: {
-    backgroundColor: '#2196F3',
+    backgroundColor: 'darkred',
     width: width * 0.4,
   },
   textStyleInfo: {

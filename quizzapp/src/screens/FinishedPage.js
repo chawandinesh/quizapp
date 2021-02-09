@@ -6,15 +6,19 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
+  NativeMethods,
   TouchableOpacity,
   Pressable,
   Alert,
   Modal,
+  NativeModules
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 import {Button} from 'react-native-elements';
 const {height, width} = Dimensions.get('window');
 export default function FinishedPage(props) {
+  const {StatusBarManager} = NativeModules;
+  const {HEIGHT} = StatusBarManager;
   const [modalVisible, setModalVisible] = React.useState(false);
 
   return (
@@ -24,6 +28,7 @@ export default function FinishedPage(props) {
         source={require('../assets/bg4.jpg')}
         style={{
           height: height,
+          paddingTop: HEIGHT,
           width: width,
           // backgroundColor: '#56189e',
           justifyContent: 'center',

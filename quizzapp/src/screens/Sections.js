@@ -4,12 +4,15 @@ import {
   Text,
   Dimensions,
   ImageBackground,
+  NativeModules,
   TouchableOpacity,
   FlatList,
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 const {height, width} = Dimensions.get('window');
 export default function Sections(props) {
+    const {StatusBarManager} = NativeModules;
+    const {HEIGHT} = StatusBarManager;
   const renderItem = ({item}) => {
     return (
       <View
@@ -56,8 +59,9 @@ export default function Sections(props) {
     <View style={{height: height, width: width}}>
       <View
         style={{
-          height: height * 0.07,
+          height: height * 0.15,
           alignItems: 'center',
+          paddingTop: HEIGHT,
           width: width,
           flexDirection: 'row',
           backgroundColor: '#1a9aad',

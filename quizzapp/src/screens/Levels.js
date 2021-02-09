@@ -6,19 +6,22 @@ import {
   ImageBackground,
   TouchableOpacity,
   FlatList,
+  NativeModules
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 const {height, width} = Dimensions.get('window');
 export default function Levels(props) {
+    const {StatusBarManager} = NativeModules;
+    const {HEIGHT} = StatusBarManager;
   const {section} = props.route.params
-
   return (
     <View style={{height: height, width: width}}>
       <View
         style={{
-          height: height * 0.07,
+          height: height * 0.15,
           alignItems: 'center',
           width: width,
+          paddingTop: HEIGHT,
           flexDirection: 'row',
           backgroundColor: '#1a9aad',
           justifyContent: 'space-between',
@@ -62,7 +65,7 @@ export default function Levels(props) {
             alignItems: 'center',
           }}>
               <Text style={{fontSize: height * 0.035 , fontWeight:'bold'}}>
-                  You are selected <Text style={{color:'#f58', fontSize: height * 0.04}}>{section}</Text>
+                  You have selected <Text style={{color:'#f58', fontSize: height * 0.04}}>{section}</Text>
               </Text>
             <View
               style={{
