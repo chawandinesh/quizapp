@@ -12,9 +12,9 @@ import {
 import {Icon} from 'react-native-elements';
 const {height, width} = Dimensions.get('window');
 export default function Levels(props) {
-    const {StatusBarManager} = NativeModules;
-    const {HEIGHT} = StatusBarManager;
-  const {section} = props.route.params
+  const {StatusBarManager} = NativeModules;
+  const {HEIGHT} = StatusBarManager;
+  const {section} = props.route.params;
   return (
     <View style={{height: height, width: width}}>
       <View
@@ -43,7 +43,7 @@ export default function Levels(props) {
               fontWeight: 'bold',
               fontSize: height * 0.04,
             }}>
-             Selected Level
+            Selected Level
           </Text>
         </View>
         <View>
@@ -61,40 +61,49 @@ export default function Levels(props) {
         <View
           style={{
             width: width,
-            height: height* 0.8,
+            height: height * 0.8,
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-             <Image source={require('../assets/img.png')} style={{height: height * 0.25, width: width * 0.4}} />
-              <Text style={{fontSize: height * 0.035 , fontWeight:'bold'}}>
-                  You have selected <Text style={{color:'#f58', fontSize: height * 0.04}}>{section}</Text>
-              </Text>
-            <View
+          <Image
+            resizeMode={'stretch'}
+            source={require('../assets/img.png')}
+            style={{height: height * 0.25, width: width * 0.35}}
+          />
+          <Text style={{fontSize: height * 0.035, fontWeight: 'bold'}}>
+            You have selected{' '}
+            <Text style={{color: '#f58', fontSize: height * 0.04}}>
+              {section}
+            </Text>
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+            <TouchableOpacity
+              onPress={() =>
+                props.navigation.navigate('QuizScreen', {section: section})
+              }
               style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
+                height: height * 0.1,
+                width: height * 0.25,
+                borderTopRightRadius: height * 0.05,
+                borderBottomLeftRadius: height * 0.05,
+                backgroundColor: '#6ec9cc',
+                borderBottomWidth: width * 0.02,
+                borderLeftWidth: width * 0.01,
+                justifyContent: 'center',
                 alignItems: 'center',
+                margin: height * 0.02,
               }}>
-              <TouchableOpacity
-                onPress={() => props.navigation.navigate('QuizScreen', {section: section})}
-                style={{
-                  height: height * 0.1,
-                  width: height * 0.25,
-                  borderTopRightRadius: height * 0.05,
-                  borderBottomLeftRadius: height * 0.05,
-                  backgroundColor: '#6ec9cc',
-                  borderBottomWidth: width * 0.02,
-                  borderLeftWidth: width * 0.01,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  margin: height * 0.02,
-                }}>
-                <Text style={{fontSize: height * 0.035, fontWeight: 'bold'}}>
-                  continue
-                </Text>
-              </TouchableOpacity>
-              <View></View>
-            </View>
+              <Text style={{fontSize: height * 0.035, fontWeight: 'bold'}}>
+                continue
+              </Text>
+            </TouchableOpacity>
+            <View></View>
+          </View>
           {/* ))} */}
         </View>
       </ImageBackground>

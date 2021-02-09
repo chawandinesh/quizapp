@@ -13,14 +13,77 @@ import {
   Modal,
   NativeModules,
 } from 'react-native';
-import {Icon} from 'react-native-elements';
+import {Divider, Rating, AirbnbRating, Icon} from 'react-native-elements';
 import {Button} from 'react-native-elements';
 const {height, width} = Dimensions.get('window');
 export default function HomeScreen(props) {
   const {StatusBarManager} = NativeModules;
   const {HEIGHT} = StatusBarManager;
   const [modalVisible, setModalVisible] = React.useState(false);
+  const [modalVisibleRate, setModalVisibleRate] = React.useState(false);
 
+  const RateModalPage = () => {
+    return (
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibleRate}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+        }}>
+        <View style={styles.centeredViewRate}>
+          <View style={styles.modalViewRate}>
+            <Image
+              style={{
+                width: width * 0.15,
+                height: width * 0.2,
+                margin: height * 0.01,
+              }}
+              resizeMode="stretch"
+              source={require('../assets/img.png')}
+            />
+            <Text
+              style={[
+                {...styles.modalTextRate, fontSize: 20, fontWeight: 'bold'},
+              ]}>
+              Enjoying Smart Master?
+            </Text>
+            <Text style={{fontSize: 15}}>Tap a star to rate it on the</Text>
+            <Text style={{fontSize: 15}}>App Store.</Text>
+            <Divider
+              style={{backgroundColor: 'black', height: 1, width: width * 0.8}}
+            />
+
+            <View style={{paddingVertical: 10}}>
+              <AirbnbRating showRating={false} />
+            </View>
+            <Divider
+              style={{backgroundColor: 'black', height: 1, width: width * 0.8}}
+            />
+
+            {/* <View style={{borderWidth:1,width: width * 0.9, borderColor:'gray'}}></View> */}
+            <TouchableOpacity
+              // style={{...styles.openButton, backgroundColor: '#2196F3'}}
+              onPress={() => {
+                setModalVisibleRate(!modalVisibleRate);
+              }}>
+              <Text
+                style={[
+                  {
+                    ...styles.textStyleRate,
+                    color: '#000',
+                    fontSize: height * 0.024,
+                    paddingTop: height * 0.012,
+                  },
+                ]}>
+                Not Now
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    );
+  };
   const ModalPage = () => {
     return (
       <View style={styles.centeredView}>
@@ -79,19 +142,6 @@ export default function HomeScreen(props) {
                 will be marked as incorrect and user will rewarded{' '}
                 <Text style={{color: 'red'}}>0 mark</Text>.
               </Text>
-              {/* <Text>
-                    {' '}
-                    If the answer selected by the user will be correct ,the
-                    answer will be marked as correct and user will rewarded +1
-                    mark.
-                  </Text> */}
-              {/* <Text>
-                    {' '}
-                    If the answer selected by the user will be incorrect ,the
-                    answer will be marked as incorrect and user will rewarded 0
-                    mark.
-                  </Text> */}
-              {/* </View> */}
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}>
@@ -145,19 +195,30 @@ export default function HomeScreen(props) {
               alignSelf: 'center',
             }}
           />
-          <Text
+          <View
             style={{
-              fontSize: width * 0.3,
-              fontWeight: 'bold',
+              height: height * 0.2,
+              padding: height * 0.01,
+              borderRadius: height * 0.02,
+              justifyContent: 'center',
+              alignItems: 'center',
               backgroundColor: '#fff',
-              borderRadius: height * 0.03,
-              color: '#05f',
-              textShadowColor: 'rgba(255,255, 255, 1)',
-              textShadowOffset: {width: -3, height: 4},
-              textShadowRadius: 10,
             }}>
-            Quiz
-          </Text>
+            <Text
+              style={{
+                fontSize: width * 0.14,
+                height: height * 0.1,
+                fontWeight: 'bold',
+                // backgroundColor: '#fff',
+                borderRadius: height * 0.03,
+                color: '#05f',
+                textShadowColor: 'rgba(255,255, 255, 1)',
+                textShadowOffset: {width: -3, height: 4},
+                textShadowRadius: 10,
+              }}>
+              Smart Master
+            </Text>
+          </View>
           <Button
             title="Start"
             onPress={() => props.navigation.navigate('Sections')}
@@ -181,7 +242,51 @@ export default function HomeScreen(props) {
           />
         </View>
         {ModalPage()}
+        {RateModalPage()}
       </ImageBackground>
+
+      <View
+        style={{
+          position: 'absolute',
+          bottom: height * 0.04,
+          // right: 0,
+          left: width * 0.1,
+          // height: height * 0.2,
+          // width: width,
+          // marginTop: height * 0.08,
+          // alignItems: 'flex-end',
+        }}>
+        <TouchableOpacity
+          style={{
+            padding: height * 0.01,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#ffd',
+            borderRadius: height * 0.01,
+            borderWidth: 1,
+            width: width * 0.3,
+            height: height * 0.08,
+            // flexDirection: 'row',
+          }}
+          onPress={() => {
+            setModalVisibleRate(true);
+          }}>
+          <Icon
+            name="star"
+            type="antdesign"
+            color="gold"
+            size={height * 0.04}
+          />
+          <Text
+            style={{
+              paddingLeft: width * 0.03,
+              fontWeight: 'bold',
+              fontSize: height * 0.028,
+            }}>
+            Rate app
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -249,6 +354,46 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+
+  //
+
+  centeredViewRate: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalViewRate: {
+    margin: 20,
+    width: width * 0.9,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  openButtonRate: {
+    backgroundColor: '#F194FF',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  textStyleRate: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalTextRate: {
     marginBottom: 15,
     textAlign: 'center',
   },
